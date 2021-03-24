@@ -1,0 +1,1 @@
+# javascritp_fullRoblesvuereactangular
