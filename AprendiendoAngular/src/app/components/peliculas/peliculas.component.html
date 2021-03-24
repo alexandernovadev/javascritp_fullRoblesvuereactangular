@@ -1,0 +1,12 @@
+<h1><b>Mis Peliculas</b></h1>
+<hr>
+<div *ngIf="peliculaFavorita" 
+class="w3-light-grey w3-panel w3-leftbar w3-border-blue">
+    <h4><b>Pelicula Favorita</b></h4>
+    <p>{{ peliculaFavorita.title }}</p>
+    <p>{{ peliculaFavorita.year }}</p>
+</div>
+<div *ngFor="let item of peliculas">
+    <app-pelicula [item] = item
+    (MarcarFavorita) = "mostrarfavoritas($event)"></app-pelicula>
+</div>

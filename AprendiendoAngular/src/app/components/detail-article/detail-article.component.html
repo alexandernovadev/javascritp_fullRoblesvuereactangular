@@ -1,0 +1,59 @@
+<div class="w3-animate-left" *ngIf="article else cargando">
+
+    <button (click)="backbutton()"
+    class="w3-button w3-red w3-hover-red mb-5 w3-round">
+        <b>< Atras</b>
+    </button>
+
+    <div class="w3-row">
+        <div class="w3-col" style="width: 30%">
+            <img src="assets/images/no-logo.jpg"
+            *ngIf="!article.image"
+            style="width: 250px; height: 390px;" 
+            class="w3-leftbar w3-border-blue" alt="Name">
+
+            <img [src]="url + 'getimage/'+ article.image"
+            *ngIf="article.image"
+            style="width: 250px; height: 420px;" 
+            class="w3-leftbar w3-border-blue" alt="Name">
+        </div>
+        <div class="w3-rest">
+            
+
+
+            <a class="mr-2 w3-button w3-hover-red w3-red w3-right w3-round"
+            (click)="op_removearticel(article._id)">
+               Elinimar
+            </a>
+              <a class="mr-2 w3-button w3-hover-green w3-green w3-right w3-round"
+              [routerLink]="[ '/article-edit', article._id ]">
+                 Editar
+                </a>
+         
+                <div id="{{ 'modal'+ article._id }}" class="w3-modal">
+                    <div class="w3-modal-content w3-animate-top" style="width: 50%;">
+                      <div class="w3-container w3-center p-3 w3-round">
+                        <span (click)="close_modal(article._id)"
+                        class="w3-button w3-display-topright w3-red"><b>&times;</b></span>
+                        <h3 class="w3-text-red">¿ Estas seguro que quieres Eliminar ?</h3>
+                        <h4><b>{{ article.title }}</b></h4> <br>
+                        <button class="w3-red w3-button w3-hover-red w3-block"
+                        (click)="eliminar(article._id)">
+                          Eliminar
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+            <h1>{{ article.title }}</h1>
+            <small>{{ article.date }}</small>
+            <br><hr>
+            <p>{{ article.content }}</p>
+
+        </div>
+    </div>
+</div>
+
+<ng-template #cargando>
+    Cargando.
+</ng-template>

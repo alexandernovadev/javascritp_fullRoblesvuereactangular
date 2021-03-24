@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+.slider
+{
+    height: 280px;
+    padding-top: 80px;
+}
+.slider_small
+{
+    height: 120px;
+    padding-top: 20px;
+}
+
+input[type="file"] {
+    display: none;
+ 
+}
+.custom-file-upload {
+   border-radius: 5px;
+    display: block;
+    padding: 6px 12px;
+    cursor: pointer;
+    color: white;
+    background: #2196f3;
+    text-align: center;
+}
+.pointer
+{
+    cursor: pointer;
+}

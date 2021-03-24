@@ -1,0 +1,9 @@
+<h1>Pagina de Pruebas</h1>
+
+<div *ngIf="name && surname">
+    <h4>Nombres : <b>{{ name }}</b></h4>
+    <h4>Apellidos : <b>{{ surname }}</b></h4>
+</div>
+<div *ngIf="!name || !surname">
+    <h4>No existe nombres</h4>
+</div>

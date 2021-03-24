@@ -1,0 +1,9 @@
+<div class="w3-center w3-red"
+[ngClass]="{'slider': size == true, 'slider_small': size == false}">
+<h1>{{ nombre }}</h1> <br>
+<button *ngIf="size" 
+(click)="redireccion()" 
+class="w3-btn w3-round w3-white">
+    Ir a mi App
+</button>
+</div>

@@ -1,0 +1,94 @@
+<div class="w3-container w3-animate-left">
+  <h1>Agregar Articulo</h1>
+  <div *ngIf="flagerror"
+  class="w3-panel w3-leftbar w3-border-red w3-pale-red w3-animate-zoom" 
+  style="width: 50%;">
+    <p>Error al guadar el articulo
+        <span class="w3-right pointer w3-large"
+        onclick="this.parentElement.style.display='none'">
+            <b>X</b>
+        </span>
+    </p>
+  </div>
+  <div *ngIf="flagwell"
+  class="w3-panel w3-leftbar w3-border-green w3-pale-green w3-animate-zoom" 
+  style="width: 50%;">
+    <p>Articulo Guardado Satisfactoriamente
+        <span class="w3-right pointer w3-large"
+        onclick="this.parentElement.style.display='none'">
+            <b>X</b>
+        </span>
+    </p>
+  
+  </div>
+  <form
+    class="w3-container w3-light-grey w3-card p-5"
+    #formaddArticle="ngForm"
+    (ngSubmit)="savearticle(formaddArticle)"
+    enctype="multipart/form-data"
+    style="width: 50%;"
+  >
+    <label>Titulo</label>
+    <input
+      class="w3-input mb-4"
+      type="text"
+      name="title"
+      autofocus
+      required
+      #title="ngModel"
+      [(ngModel)]="article.title"
+      pattern="[a-zA-ZÀ-ÿ0-9 ]+"
+    />
+
+    <label>Contenido</label><br />
+    <textarea
+      name="content"
+      class="w3-input mb-4"
+      rows="5"
+      required
+      #content="ngModel"
+      [(ngModel)]="article.content"
+      pattern="[a-zA-ZÀ-ÿ0-9 ]+"
+    ></textarea>
+
+    <label>Image</label><br />
+    <div class="w3-row">
+      <div class="w3-twothird w3-center">
+        <span *ngIf="nametempimg" class="w3-text-blue">
+          <b>{{ nametempimg }}</b>
+        </span>
+
+        <img *ngIf="image" id="thumbnail" 
+        width="200" src={{image}}
+        class="w3-leftbar w3-border-blue w3-pale-blue w3-round mt-3"/>
+      
+         <img
+          *ngIf="!image"
+          width="110"
+          src="assets/images/noimage.jpg"
+          alt="esta es la img">
+        
+      </div>
+      <div class="w3-third w3-blue mt-5">
+        <label for="file-upload" class="custom-file-upload">
+          SUBIR IMAGEN
+        </label>
+        <input
+          id="file-upload"
+          type="file"
+          name="imagen"
+          (change)="eventoimg($event)"
+          accept="image/*"
+          required
+        />
+      </div>
+    </div>
+
+    <button
+      class="w3-btn w3-red w3-block mt-3"
+      [disabled]="!formaddArticle.valid"
+    >
+      Guardar Articulo
+    </button>
+  </form>
+</div>

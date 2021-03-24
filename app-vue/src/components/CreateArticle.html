@@ -1,0 +1,41 @@
+<div class="general">
+    <Slider v-if="!isEdit" texto="Crear Articles" />
+    <Slider v-if="isEdit"  texto="Editar Articles" />
+    <div id="content">
+      <form class="mid-form" @submit.prevent="EnviarFormulario()" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="title">Titulo</label>
+          <input type="text" name="title" v-model.trim="$v.article.title.$model" autocomplete="off" />
+
+          <small
+            v-if="$v.article.title.$dirty && !$v.article.title.required"
+            style="color: red !important;"
+          >Titulo es requerido</small>
+        </div>
+        <div class="form-group">
+          <label for="content">Contenido</label>
+          <textarea name="content" v-model.trim="$v.article.content.$model"></textarea>
+          <small
+            v-if="$v.article.content.$dirty && !$v.article.content.required"
+            style="color: red !important;"
+          >Contendio es requerido</small>
+        </div>
+        <div class="form-group">
+          <div v-if="isEdit && article.image != null">
+            <img
+            style="width: 100%;"
+            :src="url+ 'getimage/'+article.image"
+            :title="article.title"
+            alt="Paisaje"
+          />
+          </div>
+          <label for="content">Image</label>
+          <input type="file" id="file" ref="file" name="file0" @change="filechangue" />
+        </div>
+        <br />
+        <button v-if="!isEdit" class="btn">ENVIAR</button>
+        <button v-if="isEdit" class="btn">EDITAR</button>
+      </form>
+    </div>
+    <Sidebar />
+  </div>

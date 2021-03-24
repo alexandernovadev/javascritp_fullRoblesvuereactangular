@@ -1,0 +1,36 @@
+<app-header></app-header>
+<app-slider [nombre] = "name"></app-slider>
+
+<div class="w3-row">   
+    
+    <div class="w3-threequarter p-5">
+        <router-outlet></router-outlet>
+        
+    </div>
+    <div class="w3-quarter p-5">
+        <div class="w3-light-grey p-3 w3-center">
+            <p>PUEDES HACER ESTO</p>
+            <button class="w3-btn w3-green"
+            [routerLink]="[ '/formulario' ]">
+                CREAR ARTICULO
+            </button>
+        </div> <br>
+        <div class="w3-light-grey p-3 w3-center">
+            <p><b>BUSCADOR</b></p>
+            <p>Encuentra el articulo que buscas</p>
+            <input class="w3-input" 
+            name="palabra" 
+            [(ngModel)]="palabra"
+            [value]="palabra"
+            (keydown.enter)="buscar()"
+            type="text"><br> <br>
+            <a class="w3-btn w3-black"
+            [routerLink]="[ '/buscar', palabra ]">
+               BUSCAR
+            </a>
+        </div>
+    </div>
+</div>
+
+<br>
+<app-footer></app-footer>

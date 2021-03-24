@@ -1,0 +1,29 @@
+<li class="w3-bar" *ngFor="let article of articles">
+    <div class="w3-row py-2">
+      <div class="w3-col" style="width: 30%;">
+          <img
+          [src]="url + 'getimage/'+ article.image"
+          class="w3-bar-item w3-hide-small"
+          style="width:200px" *ngIf="article.image"/>
+        <img
+          src="assets/images/no-logo.jpg"
+          class="w3-bar-item w3-hide-small"
+          style="width:200px" *ngIf="article.image == null"/>
+      </div>
+      <div class="w3-rest">
+          <div class="w3-bar-item">
+    
+              <span class="w3-large"><b>{{ article.title }}</b></span>
+              <small class="w3-text-grey">&nbsp; <b>Hace: {{ article.date | amLocale:'es'| amTimeAgo:true}}</b></small><br/><hr>
+              <span>{{ article.content }}</span>
+            </div>
+      </div>
+    </div>
+
+    <a class="mr-2 w3-button w3-hover-blue w3-blue w3-right w3-round"
+    [routerLink]="[ '/article', article._id ]">
+        Ver mas
+      </a>
+
+</li>
+  
